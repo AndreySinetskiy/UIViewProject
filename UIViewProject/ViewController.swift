@@ -35,13 +35,12 @@ class ViewController: UIViewController {
         colorGreen = CGFloat(greenLightSlider.value)
         colorBlue = CGFloat(blueLightSlider.value)
         
-        valueOfRedLabel.text = String(redLightSlider.value)
-        valueOfGreenLabel.text = String(greenLightSlider.value)
-        valueOfBluelabel.text = String(blueLightSlider.value)
+        valueOfRedLabel.text = String(format: "%.02f", redLightSlider.value)
+        valueOfGreenLabel.text = String(format: "%.02f", greenLightSlider.value)
+        valueOfBluelabel.text = String(format: "%.02f", blueLightSlider.value)
         
-        colorOfView = UIColor(red: colorRed, green: colorGreen, blue: colorBlue, alpha: 1.0)
+        colorOfView = UIColor(red: colorRed, green: colorGreen, blue: colorBlue, alpha: 1)
         changeColorView.backgroundColor = colorOfView
-        
     }
     
 }
