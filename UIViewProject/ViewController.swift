@@ -18,29 +18,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var greenLightSlider: UISlider!
     @IBOutlet weak var blueLightSlider: UISlider!
     
-    private var colorOfView: UIColor?
-    
-    private var colorRed: CGFloat = 0.0
-    private var colorGreen: CGFloat = 0.0
-    private var colorBlue: CGFloat = 0.0
-    
-    override func viewDidLoad() {
+   override func viewDidLoad() {
         super.viewDidLoad()
         changeColorView.layer.cornerRadius = 10
-        
+        redLightSlider.value = 0.0
+        greenLightSlider.value = 0.0
+        blueLightSlider.value = 0.0
     }
 
     @IBAction func changeColor() {
-        colorRed = CGFloat(redLightSlider.value)
-        colorGreen = CGFloat(greenLightSlider.value)
-        colorBlue = CGFloat(blueLightSlider.value)
-        
         valueOfRedLabel.text = String(format: "%.02f", redLightSlider.value)
         valueOfGreenLabel.text = String(format: "%.02f", greenLightSlider.value)
         valueOfBluelabel.text = String(format: "%.02f", blueLightSlider.value)
         
-        colorOfView = UIColor(red: colorRed, green: colorGreen, blue: colorBlue, alpha: 1)
-        changeColorView.backgroundColor = colorOfView
+        changeColorView.backgroundColor = UIColor(red: CGFloat(redLightSlider.value), green: CGFloat(greenLightSlider.value), blue: CGFloat(blueLightSlider.value), alpha: 1)
+        
     }
     
 }
