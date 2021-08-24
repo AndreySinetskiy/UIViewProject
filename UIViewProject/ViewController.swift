@@ -18,22 +18,47 @@ class ViewController: UIViewController {
     @IBOutlet weak var greenLightSlider: UISlider!
     @IBOutlet weak var blueLightSlider: UISlider!
     
-   override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         changeColorView.layer.cornerRadius = 10
-        redLightSlider.value = 0.0
-        greenLightSlider.value = 0.0
-        blueLightSlider.value = 0.0
-    }
-
-    @IBAction func changeColor() {
-        valueOfRedLabel.text = String(format: "%.02f", redLightSlider.value)
-        valueOfGreenLabel.text = String(format: "%.02f", greenLightSlider.value)
-        valueOfBluelabel.text = String(format: "%.02f", blueLightSlider.value)
         
+        setColor()
+        
+       setValue(for: valueOfRedLabel, valueOfGreenLabel, valueOfBluelabel )
+    }
+    
+    @IBAction func changeColor(_ sender: UISlider) {
+        setColor()
+        switch sender {
+        case redLightSlider:
+            valueOfRedLabel.text = string(from: redLightSlider)
+        case greenLightSlider:
+            valueOfGreenLabel.text = string(from: greenLightSlider)
+        default :
+            valueOfBluelabel.text =  string(from: blueLightSlider)
+           
+        }
+    }
+    
+    private func setColor() {
         changeColorView.backgroundColor = UIColor(red: CGFloat(redLightSlider.value), green: CGFloat(greenLightSlider.value), blue: CGFloat(blueLightSlider.value), alpha: 1)
         
     }
-    
+    private func string(from slider: UISlider) -> String {
+        String(format: "%.2f", slider.value)
+    }
+    private func setValue(for labels: UILabel...) {
+        labels.forEach { label in
+            switch label {
+            case valueOfRedLabel:
+                valueOfRedLabel.text = string(from: redLightSlider)
+            case greenLightSlider:
+                valueOfGreenLabel.text = string(from: greenLightSlider)
+            default :
+                valueOfBluelabel.text =  string(from: blueLightSlider)
+                
+            }
+        }
+    }
 }
 
